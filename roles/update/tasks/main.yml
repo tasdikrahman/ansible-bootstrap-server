@@ -4,8 +4,12 @@
   become: true
   become_user: root
   become_method: sudo
+  tags:
+    - update
 
 - name: Update and upgrade apt
   apt:
     upgrade: yes
     update_cache: yes
+  tags:
+    - update

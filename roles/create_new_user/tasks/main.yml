@@ -19,6 +19,8 @@
     mode: 0600
     owner: "{{ username }}"
     group: "{{ username }}"
+  tags:
+    - copy_host_ssh_id
 
 - name: Add user to sudoers list
   lineinfile:
