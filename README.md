@@ -1,5 +1,7 @@
 ## ansible-bootstrap-server
 
+[![Build status](https://api.travis-ci.org/prodicus/ansible-bootstrap-server.svg)](https://travis-ci.org/prodicus/ansible-bootstrap-server) 
+
 - bootstrap-server:
 	
 	Currently, it has `roles` for 
