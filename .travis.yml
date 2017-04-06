@@ -23,7 +23,6 @@ env:
   - ANSIBLE_VERSION=2.0.0.1
   - ANSIBLE_VERSION=2.0.0.0
   - ANSIBLE_VERSION=1.9.6
-  - USER=tasdik
 
 branches:
   only:
@@ -45,4 +44,4 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml -vvvv --skip-tags update,copy_host_ssh_id
 
   # check is the user is created or not
-  - id -u $USER | grep -q "no" && (echo "user not found" && exit 1) || (echo "user found" && exit 0)
+  - id -u tasdik | grep -q "no" && (echo "user not found" && exit 1) || (echo "user found" && exit 0)
