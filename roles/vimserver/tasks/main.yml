@@ -1,0 +1,7 @@
+---
+- name: Place vimrc_server on ~/.vimrc
+  copy:
+    src: vimrc_server
+    dest: /home/{{ username }}/.vimrc
+    mode: 0644
+    owner: "{{ username }}"

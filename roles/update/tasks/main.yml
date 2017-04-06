@@ -1,0 +1,11 @@
+---
+- name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible. See https://github.com/ansible/ansible/issues/16884"
+  raw: apt-get install python-minimal aptitude -y
+  become: true
+  become_user: root
+  become_method: sudo
+
+- name: Update and upgrade apt
+  apt:
+    upgrade: yes
+    update_cache: yes
