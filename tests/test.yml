@@ -3,7 +3,6 @@
   connection: local
   become: true
   roles:
-    # - {role: ../roles/update}
     - {role: ../roles/install_minimal_packages}
     - {role: ../roles/create_new_user}
     - {role: ../roles/basic_server_hardening}
