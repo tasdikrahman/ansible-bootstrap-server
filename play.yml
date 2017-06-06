@@ -5,4 +5,4 @@
     - {role: install-minimal-packages}
     - {role: create-new-user}
     - {role: basic-server-hardening}
-    - {role: vimserver}
+    - {role: vimrc-server-flavor}
