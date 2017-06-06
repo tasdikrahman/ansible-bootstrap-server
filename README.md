@@ -2,6 +2,8 @@
 
 [![Build status](https://api.travis-ci.org/prodicus/ansible-bootstrap-server.svg)](https://travis-ci.org/prodicus/ansible-bootstrap-server) 
 
+Targets Debian and RHEL based systems
+
 - bootstrap-server:
 	
 	Currently, it has `roles` for 
@@ -22,6 +24,43 @@
 		- Enable a basic firewall (`ufw` in this case )
 	- `vimserver`: places the `.vimrc` server taken from my dotfiles and places it into the `~/.vimrc` for the user `{{ usnername }}`
 
+## Running it
+
+**NOTE**: You need to have `sshpass` on your machine. [Ref](https://gist.github.com/arunoda/7790979)
+
+For Mac
+
+- `brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb`
+
+For Debian based systems
+
+- `apt-get install sshpass`
+
+```bash
+$ cp inventory.example inventory
+$ cat inventory.example
+[remotenode]
+<ip-addr>
+
+[all:vars]
+ansible_connection=ssh
+ansible_ssh_user=root
+ansible_ssh_pass=<your-pass>
+```
+
+If everything is good, check the ssh connection once
+
+```bash
+$ ansible -m ping -i inventory remotenode
+<ip-addr> | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
+
+```bash
+$ ansible-playbook play.yml -i inventory -vvv
+```
 
 ## LICENSE
 

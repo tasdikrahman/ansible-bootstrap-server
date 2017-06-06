@@ -2,7 +2,7 @@
 - hosts: all
   roles:
     - {role: update}
-    - {role: install_minimal_packages}
-    - {role: create_new_user}
-    - {role: basic_server_hardening}
+    - {role: install-minimal-packages}
+    - {role: create-new-user}
+    - {role: basic-server-hardening}
     - {role: vimserver}

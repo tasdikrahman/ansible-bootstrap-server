@@ -1,10 +1,10 @@
 ---
 - name: Install necessary packages
-  apt: 
+  package: 
     name: '{{ item }}'
     state: latest
   with_items:
   - git
-  - htop
+  - wget
   - tree
   - vim

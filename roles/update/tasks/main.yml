@@ -6,6 +6,7 @@
   become_method: sudo
   tags:
     - update
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Update and upgrade apt
   apt:
@@ -13,3 +14,12 @@
     update_cache: yes
   tags:
     - update
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+  tags:
+    - update
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
