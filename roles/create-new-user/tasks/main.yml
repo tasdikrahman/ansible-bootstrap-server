@@ -36,10 +36,18 @@
   tags:
     - copy_host_ssh_id
 
-- name: Add user to sudoers list (DEBIAN)
+- name: Add new user to sudoers list (DEBIAN)
   lineinfile:
     dest: /etc/sudoers
     regexp: "{{ username }} ALL"
     line: "{{ username }} ALL=(ALL) ALL"
     state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Add new user to sudoers list (RHEL)
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "{{ username }} ALL"
+    line: "{{ username }}	ALL=(ALL) 	NOPASSWD: ALL"
+    state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
