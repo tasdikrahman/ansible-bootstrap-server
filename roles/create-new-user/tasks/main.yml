@@ -5,7 +5,7 @@
     password: "{{ hashed_password }}"
     state: present
     shell: /bin/bash
-    groups: admin
+    groups: sudo
     append: yes
     generate_ssh_key: yes
     ssh_key_bits: 2048
@@ -36,18 +36,9 @@
   tags:
     - copy_host_ssh_id
 
-- name: Add new user to sudoers list (DEBIAN)
-  lineinfile:
-    dest: /etc/sudoers
-    regexp: "{{ username }} ALL"
-    line: "{{ username }} ALL=(ALL) ALL"
-    state: present
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: Add new user to sudoers list (RHEL)
+- name: Add new user to sudoers list
   lineinfile:
     dest: /etc/sudoers
     regexp: "{{ username }} ALL"
     line: "{{ username }}	ALL=(ALL) 	NOPASSWD: ALL"
     state: present
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
