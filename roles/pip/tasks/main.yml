@@ -1,0 +1,19 @@
+---
+- name: Install virtualenvwrapper
+  command: pip install {{ item }}
+  with_items:
+    - virtualenv
+    - virtualenvwrapper
+
+- name: create directory to store virtualenvs
+  file:
+    path: /home/{{ username }}/virtualenvs
+    state: directory
+    mode: 0755
+
+- name: copy .bashrc to home folder
+  copy:
+    src: bashrc
+    dest: /home/{{ username }}/.bashrc
+    mode: 0644
+    owner: "{{ username }}"

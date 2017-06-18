@@ -1,5 +1,0 @@
----
-# created with:
-# python -c 'import crypt; print crypt.crypt("<your-password>", "<your-key>")'
-username: tasdik
-hashed_password: doZLlIOV4Me.Q

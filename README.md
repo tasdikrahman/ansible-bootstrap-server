@@ -58,6 +58,8 @@ $ ansible -m ping -i inventory remotenode
 }
 ```
 
+Change the variable in `play.yml` named `your-username` with the new user that you want to create
+
 ```bash
 $ ansible-playbook play.yml -i inventory -vvv
 ```

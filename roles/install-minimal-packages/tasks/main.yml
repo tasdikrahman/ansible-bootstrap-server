@@ -8,10 +8,12 @@
   - wget
   - tree
   - vim
+  - ufw
   - build-essential 
   - libssl-dev
   - libffi-dev
   - python-dev
+  - python-pip
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Install necessary packages (RHEL)

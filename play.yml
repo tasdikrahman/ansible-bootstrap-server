@@ -1,8 +1,14 @@
 ---
 - hosts: all
+  vars:
+    - username: your-username
+    - hashed_password: doZLlIOV4Me.Q
+    # created with:
+    # python -c 'import crypt; print crypt.crypt("<your-password>", "<your-key>")'
   roles:
     - {role: update}
     - {role: install-minimal-packages}
     - {role: create-new-user}
     - {role: basic-server-hardening}
     - {role: vimrc-server-flavor}
+    - {role: pip}
