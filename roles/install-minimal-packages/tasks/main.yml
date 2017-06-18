@@ -1,5 +1,5 @@
 ---
-- name: Install necessary packages
+- name: Install necessary packages (DEBIAN)
   package: 
     name: '{{ item }}'
     state: latest
@@ -8,3 +8,21 @@
   - wget
   - tree
   - vim
+  - build-essential 
+  - libssl-dev
+  - libffi-dev
+  - python-dev
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install necessary packages (RHEL)
+  package:
+  with_items:
+  - git
+  - wget
+  - tree
+  - vim
+  - gcc 
+  - libffi-devel
+  - python-devel
+  - openssl-devel
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
