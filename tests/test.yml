@@ -2,9 +2,14 @@
 - hosts: localhost
   connection: local
   become: true
+  vars:
+    - username: testusername
+    - hashed_password: somesalt
   roles:
     - {role: ../roles/update}
     - {role: ../roles/install-minimal-packages}
     - {role: ../roles/create-new-user}
     - {role: ../roles/basic-server-hardening}
     - {role: ../roles/vimrc-server-flavor}
+    - {role: ../roles/pip}
+  

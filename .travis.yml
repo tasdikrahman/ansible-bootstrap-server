@@ -43,4 +43,4 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml -vvvv --skip-tags update,copy_host_ssh_id
 
   # check is the user is created or not
-  - id -u tasdik | grep -q "no" && (echo "user not found" && exit 1) || (echo "user found" && exit 0)
+  - id -u testusername | grep -q "no" && (echo "user not found" && exit 1) || (echo "user found" && exit 0)
