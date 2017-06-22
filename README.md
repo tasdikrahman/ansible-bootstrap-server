@@ -23,6 +23,8 @@ Targets Debian and RHEL based systems
 		- Disallow password authentication
 		- Enable a basic firewall (`ufw` in this case )
 	- `vimrc-server-flavor`: places the `.vimrc` server taken from my dotfiles and places it into the `~/.vimrc` for the user `{{ usnername }}`
+	- `pip`
+		- Installs `pip` and `mkvirtualenv` for managing python virtual environments
 
 ## Running it
 
