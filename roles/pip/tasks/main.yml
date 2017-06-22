@@ -6,11 +6,12 @@
     - virtualenvwrapper
 
 - name: create directory to store virtualenvs
-  become: "{{ username }}"
   file:
     path: /home/{{ username }}/virtualenvs
     state: directory
     mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
 
 - name: copy .bashrc to home folder
   copy:
