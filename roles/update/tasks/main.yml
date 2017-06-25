@@ -1,25 +1,22 @@
 ---
-- name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible. See https://github.com/ansible/ansible/issues/16884"
-  raw: apt-get install python-minimal aptitude -y
-  become: true
-  become_user: root
-  become_method: sudo
-  tags:
-    - update
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- block:
+    - name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible. See https://github.com/ansible/ansible/issues/16884"
+      raw: apt-get install python-minimal aptitude -y
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: Update and upgrade apt
-  apt:
-    upgrade: yes
-    update_cache: yes
-  tags:
-    - update
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: Update and upgrade apt
+      apt:
+        upgrade: yes
+        update_cache: yes
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: upgrade all packages
-  yum:
-    name: '*'
-    state: latest
+    - name: upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   tags:
     - update
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
